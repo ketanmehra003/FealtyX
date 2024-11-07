@@ -18,8 +18,6 @@ This project is a FastAPI-based RESTful API designed for managing and summarizin
   - [Get Student Profile Summary](#get-student-profile-summary)
 - [Concurrency and Edge Case Handling](#concurrency-and-edge-case-handling)
 - [Technologies Used](#technologies-used)
-- [License](#license)
-
 ## Features
 
 - **CRUD Operations**: Easily add, retrieve, update, and delete student profiles.
@@ -177,7 +175,7 @@ This project is a FastAPI-based RESTful API designed for managing and summarizin
 
 ```json
 {
-  "summary": "John Doe is a 20-year-old individual with an active email address."
+  "summary": "Ketan Mehra is a 21-year-old individual with an active email address ketanmehra@example.com."
 }
 ```
 
