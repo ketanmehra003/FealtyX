@@ -3,6 +3,7 @@ from models import Student, StudentUpdate
 from database import students_db, add_student, get_student, update_student, delete_student
 from llama import get_student_summary
 import threading
+import uvicorn
 
 app = FastAPI()
 lock = threading.Lock()
@@ -107,3 +108,7 @@ def get_student_summary_by_id(student_id: int):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"This functionality is currently unavailable in this environment as it requires an Ollama setup. Please refer to the demo video for a demonstration."
         )
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=10000)
