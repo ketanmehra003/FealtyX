@@ -40,8 +40,8 @@ This project is a FastAPI-based RESTful API designed for managing and summarizin
 1. **Clone the Repository**
 
     ```bash
-    git clone https://github.com/your-username/student-profile-api.git
-    cd student-profile-api
+    git clone [https://github.com/ketanmehra003/FealtyX.git](https://github.com/ketanmehra003/FealtyX.git)
+    cd FealtyX
     ```
 
 2. **Create a Virtual Environment**
@@ -65,10 +65,6 @@ This project is a FastAPI-based RESTful API designed for managing and summarizin
     uvicorn main:app --reload
     ```
 
-2. **Access the Documentation**
-
-   Once the server is running, go to [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) to view the interactive API documentation.
-
 ## API Endpoints
 
 ### Add a Student
@@ -82,7 +78,48 @@ This project is a FastAPI-based RESTful API designed for managing and summarizin
 ```json
 {
   "id": 1,
-  "name": "John Doe",
-  "age": 20,
-  "email": "johndoe@example.com"
+  "name": "Ketan Mehra",
+  "age": 21,
+  "email": "ketanmehra@example.com"
 }
+```
+
+### Get All Students
+
+- **Endpoint**: `/students`
+- **Method**: `GET`
+- **Description**: Retrieves all student profiles from the database.
+
+### Get a Student by ID
+
+- **Endpoint**: `/students/{student_id}`
+- **Method**: `GET`
+- **Description**: Retrieves the profile of a specific student by ID.
+
+### Update a Student
+
+- **Endpoint**: `/students/{student_id}`
+- **Method**: `PUT`
+- **Description**: Updates the details of a specific student by ID.
+
+#### Request Body
+
+```json
+{
+  "name": "Ketan Mehra",
+  "age": 21,
+  "email": "ketanmehra1@example.com"
+}
+```
+
+### Delete a Student
+
+- **Endpoint**: `/students/{student_id}`
+- **Method**: `DELETE`
+- **Description**: Deletes a student profile by ID.
+
+### Get Student Profile Summary
+
+- **Endpoint**: `/students/{student_id}/summary`
+- **Method**: `GET`
+- **Description**: Generates a brief summary of the student’s profile based on the provided details.
