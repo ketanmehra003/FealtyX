@@ -40,7 +40,7 @@ This project is a FastAPI-based RESTful API designed for managing and summarizin
 1. **Clone the Repository**
 
     ```bash
-    git clone [https://github.com/ketanmehra003/FealtyX.git](https://github.com/ketanmehra003/FealtyX.git)
+    git clone https://github.com/ketanmehra003/FealtyX.git
     cd FealtyX
     ```
 
@@ -83,18 +83,51 @@ This project is a FastAPI-based RESTful API designed for managing and summarizin
   "email": "ketanmehra@example.com"
 }
 ```
+#### Response
+
+```json
+{
+  "id": 1,
+  "name": "Ketan Mehra",
+  "age": 21,
+  "email": "ketanmehra@example.com"
+}
+```
 
 ### Get All Students
 
 - **Endpoint**: `/students`
 - **Method**: `GET`
 - **Description**: Retrieves all student profiles from the database.
+#### Response
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Ketan Mehra",
+    "age": 21,
+    "email": "ketanmehra@example.com"
+  },
+  ...
+]
+```
 
 ### Get a Student by ID
 
 - **Endpoint**: `/students/{student_id}`
 - **Method**: `GET`
 - **Description**: Retrieves the profile of a specific student by ID.
+#### Response
+
+```json
+{
+  "id": 1,
+  "name": "Ketan Mehra",
+  "age": 21,
+  "email": "ketanmehra@example.com"
+}
+```
 
 ### Update a Student
 
@@ -111,15 +144,56 @@ This project is a FastAPI-based RESTful API designed for managing and summarizin
   "email": "ketanmehra1@example.com"
 }
 ```
+#### Response
+
+```json
+{
+  "id": 1,
+  "name": "Ketan Mehra",
+  "age": 21,
+  "email": "ketanmehra1@example.com"
+}
+```
 
 ### Delete a Student
 
 - **Endpoint**: `/students/{student_id}`
 - **Method**: `DELETE`
 - **Description**: Deletes a student profile by ID.
+#### Response
+
+```json
+{
+  "message": "Student deleted successfully."
+}
+```
 
 ### Get Student Profile Summary
 
 - **Endpoint**: `/students/{student_id}/summary`
 - **Method**: `GET`
 - **Description**: Generates a brief summary of the student’s profile based on the provided details.
+#### Response
+
+```json
+{
+  "summary": "John Doe is a 20-year-old individual with an active email address."
+}
+```
+
+## Concurrency and Edge Case Handling
+
+### Concurrency Handling
+- The `update` and `delete` operations use a thread lock to prevent race conditions when multiple requests try to modify the same record simultaneously.
+
+### Edge Case Handling
+- **Negative or Zero Age**: Input validation ensures that unrealistic ages are not accepted.
+- **Duplicate IDs**: Attempting to add a student with an existing ID will result in a `400` error.
+- **Boundary Values**: The system handles minimum and maximum allowable age values effectively.
+
+## Technologies Used
+
+- **FastAPI**: A modern, fast web framework for building APIs with Python.
+- **LangChain & LLMs**: For generating summaries based on student data.
+- **Uvicorn**: ASGI server for running FastAPI applications.
+- **Pydantic**: Data validation and parsing.
